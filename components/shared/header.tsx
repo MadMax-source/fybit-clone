@@ -47,7 +47,7 @@ export default function Header() {
               <Link href="/Faq">FAQ</Link>
             </li>
             <li className="menu-item">
-              <Link href="/support">Support</Link>
+              <Link href="/Support">Support</Link>
             </li>
           </ul>
         </nav>
