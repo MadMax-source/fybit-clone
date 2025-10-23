@@ -38,7 +38,7 @@ export default function Header() {
               <Link href="/trade">Trade</Link>
             </li>
             <li className="menu-item">
-              <Link href="/wallet">Wallet</Link>
+              <Link href="/Account/Deposit">Wallet</Link>
             </li>
             <li className="menu-item">
               <Link href="/account">Account</Link>
