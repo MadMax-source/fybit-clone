@@ -59,9 +59,11 @@ export default function Header() {
             Sign Up
           </Link>
         </div>
+        {/*
         <div className="theme-toggle">
           <Image src="/images/toggledark.svg" alt="toggler" width={120} height={40} />
         </div>
+        */}
       </div>
     </header>
   );
