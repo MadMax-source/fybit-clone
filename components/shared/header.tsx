@@ -41,7 +41,7 @@ export default function Header() {
               <Link href="/Account/Deposit">Wallet</Link>
             </li>
             <li className="menu-item">
-              <Link href="/account">Account</Link>
+              <Link href="/Account">Account</Link>
             </li>
             <li className="menu-item">
               <Link href="/faq">FAQ</Link>
