@@ -44,7 +44,7 @@ export default function Header() {
               <Link href="/Account">Account</Link>
             </li>
             <li className="menu-item">
-              <Link href="/faq">FAQ</Link>
+              <Link href="/Faq">FAQ</Link>
             </li>
             <li className="menu-item">
               <Link href="/support">Support</Link>
