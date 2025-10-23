@@ -52,10 +52,10 @@ export default function Header() {
           </ul>
         </nav>
         <div className="header-buttons">
-          <Link href="/account/login" className="button login-button">
+          <Link href="/Account/Login" className="button login-button">
             Log In
           </Link>
-          <Link href="Account/Register" className="fybit-btn">
+          <Link href="/Account/Register" className="fybit-btn">
             Sign Up
           </Link>
         </div>

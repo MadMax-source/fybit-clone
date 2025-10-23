@@ -73,8 +73,10 @@ const Login = () => {
             <button className="change-button" type="submit">
               Log In
             </button>
-            <p className="forgot-link">
-              <Link href="/Account/ForgotPassword">Forgot your password?</Link>
+            <p className="forgot-link text-yellow-500 hover:text-yellow-600">
+              <Link href="/Account/ForgotPassword">
+                <span className="forgot-link">Forgot your password?</span>
+              </Link>
             </p>
           </div>
         </form>
