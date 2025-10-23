@@ -15,7 +15,7 @@ const Chart = () => {
               <div className="dropdown-header">
                 <div className="left-section-dropdown">
                   <span className="current-coin">
-                    <Image alt="btc" width={20} height={20} src="/svg/icon/btc.svg" />
+                    <Image alt="btc" width={20} height={20} src="/svg/bitcoin.svg" />
                     <span>Bitcoin (BTC) / USDT</span>
                     <span className="dropdown-arrow-box">▼</span>
                   </span>
@@ -34,7 +34,30 @@ const Chart = () => {
                 </div>
               </div>
             </div>
+            <div className="chart-section border">
+              <div className="tv_chart_wrapper position-relative">
+                <div className="chart__watermark">
+                  <Image
+                    src="/images/FYBIT_black_horizontal.png"
+                    className="logo-dark-img hidden"
+                    alt="dark"
+                    width={20}
+                    height={20}
+                  />
+                  <Image
+                    src="/images/FYBIT_white_horizontal.png"
+                    className="logo-dark-img"
+                    alt="light"
+                    width={20}
+                    height={20}
+                  />
+                </div>
+                <div>{/* chart goes here */}</div>
+              </div>
+            </div>
+            <div className="table-container"></div>
           </div>
+          {/*other section*/}
           <div className="mobile-container"></div>
         </div>
       </div>
