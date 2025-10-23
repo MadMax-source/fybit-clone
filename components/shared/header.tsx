@@ -35,7 +35,7 @@ export default function Header() {
         <nav className="navigation">
           <ul className="nav-list">
             <li className="menu-item">
-              <Link href="/trade">Trade</Link>
+              <Link href="/Chart">Trade</Link>
             </li>
             <li className="menu-item">
               <Link href="/Account/Deposit">Wallet</Link>

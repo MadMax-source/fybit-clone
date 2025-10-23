@@ -6,6 +6,184 @@ import Image from 'next/image';
 
 const Faq = () => {
   return (
+    <div className="min-h-screen bg-[#1a1a1a] text-white flex flex-col">
+      <Header />
+
+      <main className="flex-1 w-full max-w-7xl mx-auto p-6 py-22">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* LEFT MENU */}
+          <nav className="bg-[#1e1e1e] rounded-lg p-6 shadow-md border border-[#292929] w-full lg:w-1/4">
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/Faq/GettingStarted"
+                  className="block text-gray-300 hover:text-yellow-400 transition"
+                >
+                  Getting Started
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/Faq/DepositWithdrawal"
+                  className="block text-gray-300 hover:text-yellow-400 transition"
+                >
+                  Deposit / Withdrawal
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/Faq/Trading"
+                  className="block text-gray-300 hover:text-yellow-400 transition"
+                >
+                  Trading
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/Faq/Chart"
+                  className="block text-gray-300 hover:text-yellow-400 transition"
+                >
+                  Chart
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/Faq/Account"
+                  className="block text-gray-300 hover:text-yellow-400 transition"
+                >
+                  Account
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/Faq/AffiliateProgram"
+                  className="block text-gray-300 hover:text-yellow-400 transition"
+                >
+                  Referral Program
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          {/* RIGHT CONTENT */}
+          <div className="flex-1 bg-[#1e1e1e] rounded-lg p-6 shadow-md border border-[#292929]">
+            <div className="flex items-center gap-3 mb-6 justify-center">
+              <Image src="/images/icons/faq.png" alt="FAQ Icon" width={120} height={120} />
+            </div>
+
+            {/* SEARCH BAR */}
+            <div className="mb-6">
+              <input
+                type="text"
+                placeholder="Search help articles"
+                className="w-full bg-[#252525] text-white border border-gray-700 rounded-md p-3 outline-none focus:border-yellow-400"
+              />
+            </div>
+
+            {/* CATEGORY GRID */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* CARD */}
+              {[
+                {
+                  title: 'Getting Started',
+                  links: [
+                    'How do I create an account?',
+                    'How to enable 2FA?',
+                    'How can I make a deposit?',
+                    'How do I place an order?',
+                    'How to close a position?',
+                  ],
+                  href: '/Faq/GettingStarted',
+                },
+                {
+                  title: 'Deposit / Withdrawal',
+                  links: [
+                    'How can I make a deposit?',
+                    'What is the minimum deposit amount?',
+                    'How long does it take to make a deposit?',
+                    'What if I send funds to someone else’s address?',
+                    'How can I make a withdrawal?',
+                  ],
+                  href: '/Faq/DepositWithdrawal',
+                },
+                {
+                  title: 'Trading',
+                  links: [
+                    'How do I place an order?',
+                    'Are market order fees higher than limit order fees?',
+                    'How do I place buy limit orders?',
+                  ],
+                  href: '/Faq/Trading',
+                },
+                {
+                  title: 'Chart',
+                  links: [
+                    'Where do you get the quotes from?',
+                    'How do I enlarge the chart?',
+                    'Where is the price value on the chart?',
+                    'Do you have a countdown function?',
+                    'How do I reset the chart to default settings?',
+                  ],
+                  href: '/Faq/Chart',
+                },
+                {
+                  title: 'Account',
+                  links: [
+                    'How do I create an account?',
+                    'I forgot my password, how can I change it?',
+                    'How to enable 2FA?',
+                    'Why is 2FA not working when logging in?',
+                  ],
+                  href: '/Faq/Account',
+                },
+                {
+                  title: 'Referral Program',
+                  links: [
+                    'What is the Referral Program?',
+                    'How much will I get per referral?',
+                    'What traffic sources can I use?',
+                    'When are referrals paid?',
+                  ],
+                  href: '/Faq/AffiliateProgram',
+                },
+              ].map((category, i) => (
+                <div
+                  key={i}
+                  className="bg-[#252525] rounded-lg p-5 border border-[#333] hover:border-yellow-400 transition"
+                >
+                  <h3 className="text-xl font-semibold text-yellow-400 mb-3">{category.title}</h3>
+                  <ul className="space-y-2 text-gray-300 text-sm">
+                    {category.links.map((link, j) => (
+                      <li key={j}>
+                        <Link href={category.href} className="hover:text-yellow-400 transition">
+                          {link}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Faq;
+
+/*
+
+import Header from '../shared/header';
+import Footer from '../shared/footer';
+import Link from 'next/link';
+import Image from 'next/image';
+
+const Faq = () => {
+  return (
     <div>
       <div>
         <Header />
@@ -243,3 +421,5 @@ const Faq = () => {
 };
 
 export default Faq;
+
+*/

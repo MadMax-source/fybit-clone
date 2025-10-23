@@ -5,17 +5,17 @@ import Link from 'next/link';
 
 const Support = () => {
   return (
-    <div className="min-h-screen bg-[#0e0e0e] text-white flex flex-col">
+    <div className="min-h-screen bg-[#1a1a1a] text-white flex flex-col">
       <Header />
 
       <main className="flex-1 w-full max-w-7xl mx-auto p-6 flex flex-col lg:flex-row gap-8 pt-22">
         {/* LEFT SECTION - NEW REQUEST */}
-        <div className="flex-1 bg-[#111] rounded-lg p-6 shadow-lg border border-[#222]">
+        <div className="flex-1 bg-[#1f1f1f] rounded-lg p-6 shadow-lg border border-[#2a2a2a]">
           <h2 className="text-3xl font-bold text-yellow-400 mb-4">New Request</h2>
           <p className="text-gray-300 mb-2">Choose the theme of the request</p>
 
           <div className="flex flex-col gap-4">
-            <select className="bg-[#1a1a1a] text-white border border-gray-700 rounded-md p-3 outline-none focus:border-yellow-400">
+            <select className="bg-[#242424] text-white border border-gray-700 rounded-md p-3 outline-none focus:border-yellow-400">
               <option>Withdrawal</option>
               <option>Deposit</option>
               <option>Trade</option>
@@ -26,13 +26,13 @@ const Support = () => {
             <input
               type="text"
               placeholder="TxId"
-              className="bg-[#1a1a1a] text-white border border-gray-700 rounded-md p-3 outline-none focus:border-yellow-400"
+              className="bg-[#242424] text-white border border-gray-700 rounded-md p-3 outline-none focus:border-yellow-400"
             />
 
             <textarea
               placeholder="Write your request"
               rows={5}
-              className="bg-[#1a1a1a] text-white border border-gray-700 rounded-md p-3 outline-none focus:border-yellow-400 resize-none"
+              className="bg-[#242424] text-white border border-gray-700 rounded-md p-3 outline-none focus:border-yellow-400 resize-none"
             />
 
             <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 rounded-md transition-all">
@@ -58,11 +58,11 @@ const Support = () => {
         {/* RIGHT SECTION */}
         <div className="w-full lg:w-[45%] flex flex-col gap-8">
           {/* LATEST REQUESTS */}
-          <div className="bg-[#111] rounded-lg p-6 shadow-lg border border-[#222]">
+          <div className="bg-[#1f1f1f] rounded-lg p-6 shadow-lg border border-[#2a2a2a]">
             <h2 className="text-3xl font-bold text-yellow-400 mb-4">Latest Requests</h2>
             <table className="w-full border border-gray-700 text-left text-sm">
               <thead>
-                <tr className="bg-[#1a1a1a] text-gray-300">
+                <tr className="bg-[#242424] text-gray-300">
                   <th className="p-3 border-b border-gray-700">Ticket</th>
                   <th className="p-3 border-b border-gray-700">Date (UTC)</th>
                   <th className="p-3 border-b border-gray-700">Status</th>
@@ -79,11 +79,11 @@ const Support = () => {
           </div>
 
           {/* LATEST NOTICE */}
-          <div className="bg-[#111] rounded-lg p-6 shadow-lg border border-[#222]">
+          <div className="bg-[#1f1f1f] rounded-lg p-6 shadow-lg border border-[#2a2a2a]">
             <h2 className="text-3xl font-bold text-yellow-400 mb-4">Latest Notice</h2>
             <table className="w-full border border-gray-700 text-left text-sm">
               <thead>
-                <tr className="bg-[#1a1a1a] text-gray-300">
+                <tr className="bg-[#242424] text-gray-300">
                   <th className="p-3 border-b border-gray-700">Ticket</th>
                   <th className="p-3 border-b border-gray-700">Date (UTC)</th>
                 </tr>
