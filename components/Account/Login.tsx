@@ -34,14 +34,22 @@ const Login = () => {
             </div>
             <label>Email</label>
             <div className="icon-wrapper">
-              <input className="input-field" placeholder="@mail.com" autoComplete="on" />
+              <input
+                className="border border-gray-300  rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-yellow-600 my-1"
+                placeholder="@mail.com"
+                autoComplete="on"
+              />
               <span className="input-icon">
                 <Mail />
               </span>
             </div>
             <label>Password</label>
             <div className="password-wrapper">
-              <input className="input-field" placeholder="Enter your password" autoComplete="off" />
+              <input
+                className="border border-gray-300  rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-yellow-600 my-1"
+                placeholder="Enter your password"
+                autoComplete="off"
+              />
               <span className="toggle-password">
                 <Eye />
               </span>
@@ -49,7 +57,7 @@ const Login = () => {
             <label>Google 2FA (if enabled)</label>
             <div className="icon-wrapper">
               <input
-                className="input-field"
+                className="border border-gray-300  rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-yellow-600 my-1"
                 placeholder="Google authenticator 6 Digits"
                 autoComplete="off"
               />
