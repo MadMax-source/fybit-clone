@@ -7,6 +7,8 @@ import Image from 'next/image';
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
   return (
     <header className="header">
       <div className="header-container">
@@ -59,12 +61,70 @@ export default function Header() {
             Sign Up
           </Link>
         </div>
-        {/*
-        <div className="theme-toggle">
-          <Image src="/images/toggledark.svg" alt="toggler" width={120} height={40} />
-        </div>
-        */}
+        <button
+          onClick={toggleMenu}
+          className="md:hidden flex items-center justify-center p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+        >
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+      {menuOpen && (
+        <div className="md:hidden bg-[#0a0a0a] border-td border-gray-200 border-gray-800 shadow-lg">
+          <div className="flex items-right justify-end   gap-3 py-4 px-4 ">
+            <Link
+              href="/Account/Login"
+              onClick={() => setMenuOpen(false)}
+              className=" text-center border p-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition button login-button"
+            >
+              Log In
+            </Link>
+            <Link
+              href="/Account/Register"
+              onClick={() => setMenuOpen(false)}
+              className="text-white bg-yellow-400 p-3 rounded-md hover:bg-yellow-700 "
+            >
+              <span className="text-white">Sign Up</span>
+            </Link>
+          </div>
+          <nav className="flex flex-col items-center text-xl gap-4 py-6">
+            <Link
+              href="/Chart"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-blue-500 transition"
+            >
+              Trade
+            </Link>
+            <Link
+              href="/Account/Deposit"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-blue-500 transition"
+            >
+              Wallet
+            </Link>
+            <Link
+              href="/Account"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-blue-500 transition"
+            >
+              Account
+            </Link>
+            <Link
+              href="/Faq"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-blue-500 transition"
+            >
+              FAQ
+            </Link>
+            <Link
+              href="/Support"
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-blue-500 transition"
+            >
+              Support
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
