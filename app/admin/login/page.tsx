@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { Card } from '@/components/Card';
+import Image from 'next/image';
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState('');
@@ -19,9 +20,7 @@ export default function AdminLoginPage() {
     setLoading(true);
 
     try {
-      if (email === '' || password === '') {
-        throw new Error('Please enter both email and password.');
-      }
+      if (!email || !password) throw new Error('Please enter both email and password.');
 
       if (email === 'admin@fybit.com' && password === 'admin123') {
         localStorage.setItem('admin', JSON.stringify({ email, role: 'admin' }));
@@ -37,63 +36,68 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 px-4">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-[#1a1a1a] px-4">
+      <Card className="w-full max-w-md bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl shadow-lg shadow-black/40 p-8">
+        {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-emerald-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <svg
-              className="w-10 h-10 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-              />
-            </svg>
+          <div className="  rounded-2xl flex items-center justify-center mx-auto mb-5 ">
+            <Image src="/images/FYBIT_black_horizontal.png" width={100} height={100} alt="logo" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Admin Portal</h1>
-          <p className="text-gray-600 dark:text-gray-400">Sign in to access admin dashboard</p>
+
+          <h1 className="text-3xl font-bold text-gray-500 mb-2">Admin Portal</h1>
+          <p className="text-[#9ca3af] text-sm">
+            Sign in to access your <span className="text-blue-400 font-medium">Fybit Admin</span>{' '}
+            dashboard
+          </p>
         </div>
 
-        <form onSubmit={handleLogin} className="space-y-4">
-          <Input
-            type="email"
-            label="Admin Email"
-            placeholder="admin@fybit.com"
-            className="text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+        {/* Form */}
+        <form onSubmit={handleLogin} className="space-y-5">
+          <div>
+            <label className="block text-sm font-medium text-gray-400 mb-2">Admin Email</label>
+            <input
+              type="email"
+              placeholder="admin@fybit.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-[#111] text-white placeholder-gray-500 border border-[#2a2a2a] rounded-lg p-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              required
+            />
+          </div>
 
-          <Input
-            type="password"
-            label="Password"
-            placeholder="Enter admin password"
-            className="text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div>
+            <label className="block text-sm font-medium text-gray-400 mb-2">Password</label>
+            <input
+              type="password"
+              placeholder="Enter admin password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full bg-[#111] text-white placeholder-gray-500 border border-[#2a2a2a] rounded-lg p-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              required
+            />
+          </div>
 
+          {/* Error */}
           {error && (
-            <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-600 dark:text-red-400 text-sm">
+            <div className="p-3 bg-red-900/30 border border-red-800 rounded-lg text-red-400 text-sm text-center">
               {error}
             </div>
           )}
 
-          <Button type="submit" className="w-full" disabled={loading}>
+          <Button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all shadow-md shadow-blue-600/30"
+            disabled={loading}
+          >
             {loading ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>
 
-        <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-          <p className="text-xs text-gray-600 dark:text-gray-400 text-center">
-            Demo credentials: admin@fybit.com / admin123
+        {/* Footer note */}
+        <div className="mt-8 p-4 bg-[#111] border border-[#2a2a2a] rounded-lg text-center">
+          <p className="text-xs text-gray-500">
+            Demo credentials: <span className="text-blue-400">admin@fybit.com</span> /{' '}
+            <span className="text-blue-400">admin123</span>
           </p>
         </div>
       </Card>

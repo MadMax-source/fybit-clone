@@ -46,24 +46,27 @@ export default function AdminDashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-[#1a1a1a] text-white">
       <AdminNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white">Dashboard</h1>
-          <p className="text-gray-400 mt-1">
-            Welcome back, monitor your platform performance
-          </p>
+          <p className="text-gray-400 mt-1">Welcome back, monitor your platform performance</p>
         </div>
 
+        {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {stats.map((stat) => (
-            <Card key={stat.label} className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
+            <Card
+              key={stat.label}
+              className="p-6 bg-[#1f1f1f] border border-[#242424] rounded-xl hover:border-yellow-500/40 hover:shadow-yellow-500/10 transition-all"
+            >
               <div className="flex justify-between items-start">
                 <div>
                   <p className="text-sm text-gray-400 mb-1">{stat.label}</p>
-                  <p className="text-2xl font-bold text-white">{stat.value}</p>
+                  <p className="text-2xl font-semibold text-white">{stat.value}</p>
                 </div>
                 <div
                   className={`flex items-center space-x-1 text-sm font-medium ${
@@ -89,16 +92,16 @@ export default function AdminDashboardPage() {
           ))}
         </div>
 
+        {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <Card className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
-            <h2 className="text-lg font-semibold text-white mb-4">
-              Trading Volume
-            </h2>
+          {/* Trading Volume */}
+          <Card className="p-6 bg-[#1f1f1f] border border-[#242424] rounded-xl hover:border-yellow-500/40 hover:shadow-yellow-500/10 transition-all">
+            <h2 className="text-lg font-semibold text-white mb-4">Trading Volume</h2>
             <div className="h-64 flex items-end justify-around space-x-2">
               {[45, 62, 58, 71, 65, 78, 92].map((height, i) => (
                 <div key={i} className="flex-1 flex flex-col items-center">
                   <div
-                    className="w-full bg-yellow-500 rounded-t hover:bg-yellow-400 transition-colors cursor-pointer"
+                    className="w-full bg-blue-600 rounded-t hover:bg-blue-600/70 transition-colors cursor-pointer"
                     style={{ height: `${height}%` }}
                   />
                   <span className="text-xs text-gray-400 mt-2">
@@ -109,20 +112,19 @@ export default function AdminDashboardPage() {
             </div>
           </Card>
 
-          <Card className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
-            <h2 className="text-lg font-semibold text-white mb-4">
-              User Distribution
-            </h2>
+          {/* User Distribution */}
+          <Card className="p-6 bg-[#1f1f1f] border border-[#242424] rounded-xl hover:border-yellow-500/40 hover:shadow-yellow-500/10 transition-all">
+            <h2 className="text-lg font-semibold text-white mb-4">User Distribution</h2>
             <div className="flex items-center justify-center h-64">
               <div className="relative w-48 h-48">
                 <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#374151" strokeWidth="20" />
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#242424" strokeWidth="20" />
                   <circle
                     cx="50"
                     cy="50"
                     r="40"
                     fill="none"
-                    stroke="#eab308"
+                    stroke="#facc15"
                     strokeWidth="20"
                     strokeDasharray="188.4 62.8"
                   />
@@ -131,7 +133,7 @@ export default function AdminDashboardPage() {
                     cy="50"
                     r="40"
                     fill="none"
-                    stroke="#fbbf24"
+                    stroke="#eab308"
                     strokeWidth="20"
                     strokeDasharray="62.8 188.4"
                     strokeDashoffset="-188.4"
@@ -158,20 +160,15 @@ export default function AdminDashboardPage() {
           </Card>
         </div>
 
-        <Card className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
-          <h2 className="text-lg font-semibold text-white mb-4">
-            Recent Activities
-          </h2>
+        {/* Recent Activities */}
+        <Card className="p-6 bg-[#1f1f1f] border border-[#242424] rounded-xl hover:border-yellow-500/40 hover:shadow-yellow-500/10 transition-all">
+          <h2 className="text-lg font-semibold text-white mb-4">Recent Activities</h2>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="border-b border-gray-700">
+              <thead className="border-b border-[#242424]">
                 <tr>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">
-                    Time
-                  </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">
-                    User
-                  </th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">Time</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">User</th>
                   <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">
                     Action
                   </th>
@@ -184,17 +181,11 @@ export default function AdminDashboardPage() {
                 {recentActivities.map((activity, index) => (
                   <tr
                     key={index}
-                    className="border-b border-gray-700 hover:bg-gray-700/50 transition-colors"
+                    className="border-b border-[#242424] hover:bg-[#242424] transition-colors"
                   >
-                    <td className="py-3 px-4 text-sm text-gray-400">
-                      {activity.time}
-                    </td>
-                    <td className="py-3 px-4 text-sm text-white">
-                      {activity.user}
-                    </td>
-                    <td className="py-3 px-4 text-sm text-gray-300">
-                      {activity.action}
-                    </td>
+                    <td className="py-3 px-4 text-sm text-gray-400">{activity.time}</td>
+                    <td className="py-3 px-4 text-sm text-white">{activity.user}</td>
+                    <td className="py-3 px-4 text-sm text-gray-300">{activity.action}</td>
                     <td className="py-3 px-4 text-sm font-medium text-yellow-500">
                       {activity.amount}
                     </td>

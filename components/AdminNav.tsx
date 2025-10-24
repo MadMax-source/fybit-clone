@@ -58,7 +58,7 @@ export function AdminNav() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-1">
+            <div className=" md:flex space-x-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
