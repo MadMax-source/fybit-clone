@@ -25,7 +25,7 @@ export default function AdminLoginPage() {
 
       if (email === 'admin@fybit.com' && password === 'admin123') {
         localStorage.setItem('admin', JSON.stringify({ email, role: 'admin' }));
-        router.push('/admin/dashboard');
+        router.push('/admin');
       } else {
         throw new Error('Invalid admin credentials');
       }
