@@ -32,7 +32,7 @@ export function AdminNav() {
       <div className="max-w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-8">
-            <Link href="/admin/dashboard" className="flex items-center space-x-2">
+            <Link href="/admin" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center shadow-sm">
                 <svg
                   className="w-5 h-5 text-white"
@@ -53,7 +53,7 @@ export function AdminNav() {
 
             <div className="hidden md:flex space-x-1">
               <Link
-                href="/admin/dashboard"
+                href="/admin"
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   isActive('/admin/dashboard')
                     ? 'bg-blue-600 text-white shadow-sm'
