@@ -16,10 +16,10 @@ export default function Header() {
   const toggleLanguage = () => setLanguageOpen(!languageOpen);
 
   const languages = [
-    { name: 'English', flag: '/flags/gb.svg' },
-    { name: 'Dutch', flag: '/flags/nl.svg' },
-    { name: 'Español', flag: '/flags/es.svg' },
-    { name: 'Netherlands', flag: '/flags/nl.svg' },
+    { name: 'English', flag: '/svg/english.png' },
+    { name: 'Dutch', flag: '/svg/germany.png' },
+    { name: 'Español', flag: '/svg/spain.png' },
+    { name: 'Netherlands', flag: '/svg/netherland.png' },
   ];
 
   const handleLanguageSelect = (lang: string) => {
@@ -197,6 +197,7 @@ export default function Header() {
               Support
             </Link>
           </nav>
+          <div className="border border-gray-500 my-3"></div>
           <div className="relative  flex items-center justify-center w-full ">
             <button
               onClick={toggleLanguage}
