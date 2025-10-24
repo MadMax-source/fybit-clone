@@ -36,35 +36,35 @@ export default function AdminUsersPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-900">
       <AdminNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">User Management</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">Manage and monitor all platform users</p>
+          <h1 className="text-3xl font-bold text-white">User Management</h1>
+          <p className="text-gray-400 mt-1">Manage and monitor all platform users</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card className="p-6">
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Users</p>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">12,543</p>
+          <Card className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
+            <p className="text-sm text-gray-400 mb-1">Total Users</p>
+            <p className="text-3xl font-bold text-white">12,543</p>
           </Card>
-          <Card className="p-6">
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Active Users</p>
-            <p className="text-3xl font-bold text-green-600">11,892</p>
+          <Card className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
+            <p className="text-sm text-gray-400 mb-1">Active Users</p>
+            <p className="text-3xl font-bold text-green-500">11,892</p>
           </Card>
-          <Card className="p-6">
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Suspended</p>
-            <p className="text-3xl font-bold text-red-600">651</p>
+          <Card className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
+            <p className="text-sm text-gray-400 mb-1">Suspended</p>
+            <p className="text-3xl font-bold text-red-500">651</p>
           </Card>
-          <Card className="p-6">
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">New (7 days)</p>
-            <p className="text-3xl font-bold text-blue-600">234</p>
+          <Card className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
+            <p className="text-sm text-gray-400 mb-1">New (7 days)</p>
+            <p className="text-3xl font-bold text-yellow-500">234</p>
           </Card>
         </div>
 
-        <Card className="p-6">
+        <Card className="p-6 bg-gray-800 border-gray-700">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
             <div className="flex-1 max-w-md">
               <Input
@@ -78,7 +78,7 @@ export default function AdminUsersPage() {
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
-                className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                className="px-4 py-2 border border-gray-600 rounded-lg bg-gray-700 text-white"
               >
                 <option value="all">All Status</option>
                 <option value="active">Active</option>
@@ -90,30 +90,30 @@ export default function AdminUsersPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="border-b border-gray-200 dark:border-gray-700">
+              <thead className="border-b border-gray-700">
                 <tr>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">User</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Status</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">KYC</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Balance (USDT)</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Joined</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700 dark:text-gray-300">Actions</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">User</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">Status</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">KYC</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">Balance (USDT)</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">Joined</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredUsers.map((user) => (
-                  <tr key={user.id} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                  <tr key={user.id} className="border-b border-gray-700 hover:bg-gray-700/50 transition-colors">
                     <td className="py-3 px-4">
                       <div>
-                        <p className="text-sm font-medium text-gray-900 dark:text-white">{user.name}</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{user.email}</p>
+                        <p className="text-sm font-medium text-white">{user.name}</p>
+                        <p className="text-sm text-gray-400">{user.email}</p>
                       </div>
                     </td>
                     <td className="py-3 px-4">
                       <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
                         user.status === 'active'
-                          ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
-                          : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
+                          ? 'bg-green-900/20 text-green-400'
+                          : 'bg-red-900/20 text-red-400'
                       }`}>
                         {user.status}
                       </span>
@@ -121,34 +121,34 @@ export default function AdminUsersPage() {
                     <td className="py-3 px-4">
                       <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
                         user.kyc === 'verified'
-                          ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
+                          ? 'bg-green-900/20 text-green-400'
                           : user.kyc === 'pending'
-                          ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400'
-                          : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
+                          ? 'bg-yellow-900/20 text-yellow-400'
+                          : 'bg-red-900/20 text-red-400'
                       }`}>
                         {user.kyc}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-sm font-medium text-gray-900 dark:text-white">
+                    <td className="py-3 px-4 text-sm font-medium text-yellow-500">
                       ${user.balance}
                     </td>
-                    <td className="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">
+                    <td className="py-3 px-4 text-sm text-gray-400">
                       {user.joined}
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex items-center space-x-2">
-                        <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                        <button className="text-yellow-500 hover:text-yellow-400 text-sm font-medium">
                           View
                         </button>
-                        <button className="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 text-sm font-medium">
+                        <button className="text-gray-400 hover:text-gray-300 text-sm font-medium">
                           Edit
                         </button>
                         {user.status === 'active' ? (
-                          <button className="text-red-600 hover:text-red-700 text-sm font-medium">
+                          <button className="text-red-500 hover:text-red-400 text-sm font-medium">
                             Suspend
                           </button>
                         ) : (
-                          <button className="text-green-600 hover:text-green-700 text-sm font-medium">
+                          <button className="text-green-500 hover:text-green-400 text-sm font-medium">
                             Activate
                           </button>
                         )}
@@ -161,21 +161,21 @@ export default function AdminUsersPage() {
           </div>
 
           <div className="flex items-center justify-between mt-6">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-400">
               Showing {filteredUsers.length} of {users.length} users
             </p>
             <div className="flex items-center space-x-2">
-              <button className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm text-gray-700 dark:text-gray-300">
+              <button className="px-3 py-1 border border-gray-600 rounded hover:bg-gray-700 text-sm text-gray-300">
                 Previous
               </button>
-              <button className="px-3 py-1 bg-emerald-600 text-white rounded text-sm">1</button>
-              <button className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm text-gray-700 dark:text-gray-300">
+              <button className="px-3 py-1 bg-yellow-500 text-black rounded text-sm font-medium">1</button>
+              <button className="px-3 py-1 border border-gray-600 rounded hover:bg-gray-700 text-sm text-gray-300">
                 2
               </button>
-              <button className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm text-gray-700 dark:text-gray-300">
+              <button className="px-3 py-1 border border-gray-600 rounded hover:bg-gray-700 text-sm text-gray-300">
                 3
               </button>
-              <button className="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-800 text-sm text-gray-700 dark:text-gray-300">
+              <button className="px-3 py-1 border border-gray-600 rounded hover:bg-gray-700 text-sm text-gray-300">
                 Next
               </button>
             </div>

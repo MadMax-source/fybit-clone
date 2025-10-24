@@ -46,28 +46,28 @@ export default function AdminDashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-gray-900">
       <AdminNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-1">
+          <h1 className="text-3xl font-bold text-white">Dashboard</h1>
+          <p className="text-gray-400 mt-1">
             Welcome back, monitor your platform performance
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {stats.map((stat) => (
-            <Card key={stat.label} className="p-6 hover:shadow-lg transition-shadow">
+            <Card key={stat.label} className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-1">{stat.label}</p>
-                  <p className="text-2xl font-bold text-slate-900 dark:text-white">{stat.value}</p>
+                  <p className="text-sm text-gray-400 mb-1">{stat.label}</p>
+                  <p className="text-2xl font-bold text-white">{stat.value}</p>
                 </div>
                 <div
                   className={`flex items-center space-x-1 text-sm font-medium ${
-                    stat.trend === 'up' ? 'text-green-600' : 'text-red-600'
+                    stat.trend === 'up' ? 'text-green-500' : 'text-red-500'
                   }`}
                 >
                   <span>{stat.change}</span>
@@ -90,18 +90,18 @@ export default function AdminDashboardPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <Card className="p-6 hover:shadow-lg transition-shadow">
-            <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+          <Card className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
+            <h2 className="text-lg font-semibold text-white mb-4">
               Trading Volume
             </h2>
             <div className="h-64 flex items-end justify-around space-x-2">
               {[45, 62, 58, 71, 65, 78, 92].map((height, i) => (
                 <div key={i} className="flex-1 flex flex-col items-center">
                   <div
-                    className="w-full bg-blue-600 rounded-t hover:bg-blue-500 transition-colors cursor-pointer"
+                    className="w-full bg-yellow-500 rounded-t hover:bg-yellow-400 transition-colors cursor-pointer"
                     style={{ height: `${height}%` }}
                   />
-                  <span className="text-xs text-slate-600 dark:text-slate-400 mt-2">
+                  <span className="text-xs text-gray-400 mt-2">
                     {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][i]}
                   </span>
                 </div>
@@ -109,20 +109,20 @@ export default function AdminDashboardPage() {
             </div>
           </Card>
 
-          <Card className="p-6 hover:shadow-lg transition-shadow">
-            <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+          <Card className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
+            <h2 className="text-lg font-semibold text-white mb-4">
               User Distribution
             </h2>
             <div className="flex items-center justify-center h-64">
               <div className="relative w-48 h-48">
                 <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" strokeWidth="20" />
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#374151" strokeWidth="20" />
                   <circle
                     cx="50"
                     cy="50"
                     r="40"
                     fill="none"
-                    stroke="#2563eb"
+                    stroke="#eab308"
                     strokeWidth="20"
                     strokeDasharray="188.4 62.8"
                   />
@@ -131,7 +131,7 @@ export default function AdminDashboardPage() {
                     cy="50"
                     r="40"
                     fill="none"
-                    stroke="#60a5fa"
+                    stroke="#fbbf24"
                     strokeWidth="20"
                     strokeDasharray="62.8 188.4"
                     strokeDashoffset="-188.4"
@@ -139,43 +139,43 @@ export default function AdminDashboardPage() {
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-slate-900 dark:text-white">12.5K</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">Total</p>
+                    <p className="text-2xl font-bold text-white">12.5K</p>
+                    <p className="text-sm text-gray-400">Total</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="flex justify-center space-x-6 mt-4">
               <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                <span className="text-sm text-slate-700 dark:text-slate-300">Verified (75%)</span>
+                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <span className="text-sm text-gray-300">Verified (75%)</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-                <span className="text-sm text-slate-700 dark:text-slate-300">Pending (25%)</span>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                <span className="text-sm text-gray-300">Pending (25%)</span>
               </div>
             </div>
           </Card>
         </div>
 
-        <Card className="p-6 hover:shadow-lg transition-shadow">
-          <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+        <Card className="p-6 bg-gray-800 border-gray-700 hover:shadow-xl hover:shadow-yellow-500/10 transition-all">
+          <h2 className="text-lg font-semibold text-white mb-4">
             Recent Activities
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="border-b border-slate-200 dark:border-slate-700">
+              <thead className="border-b border-gray-700">
                 <tr>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">
                     Time
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">
                     User
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">
                     Action
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-300">
                     Amount
                   </th>
                 </tr>
@@ -184,18 +184,18 @@ export default function AdminDashboardPage() {
                 {recentActivities.map((activity, index) => (
                   <tr
                     key={index}
-                    className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                    className="border-b border-gray-700 hover:bg-gray-700/50 transition-colors"
                   >
-                    <td className="py-3 px-4 text-sm text-slate-600 dark:text-slate-400">
+                    <td className="py-3 px-4 text-sm text-gray-400">
                       {activity.time}
                     </td>
-                    <td className="py-3 px-4 text-sm text-slate-900 dark:text-white">
+                    <td className="py-3 px-4 text-sm text-white">
                       {activity.user}
                     </td>
-                    <td className="py-3 px-4 text-sm text-slate-700 dark:text-slate-300">
+                    <td className="py-3 px-4 text-sm text-gray-300">
                       {activity.action}
                     </td>
-                    <td className="py-3 px-4 text-sm font-medium text-slate-900 dark:text-white">
+                    <td className="py-3 px-4 text-sm font-medium text-yellow-500">
                       {activity.amount}
                     </td>
                   </tr>
