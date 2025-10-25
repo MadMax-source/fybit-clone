@@ -41,46 +41,40 @@ const Home = () => {
           </div>
         </div>
         {/* PLATFORM SECTION */}
-        <section className="platform-section">
-          <div className="text-buttons">
-            <div>Choose your Platform</div>
-            <div className="gap-2 flex justify-center items-center">
-              <div>
-                <button type="button" className="prev-platform">
-                  Desktop
-                </button>
-              </div>
-              <div>
-                <button type="button" className="next-platform">
-                  Mobile
-                </button>
-              </div>
+        <section className="bg-[#1a1a1a] py-8 w-full  text-white    flex flex-col md:flex-row items-center justify-between gap-10">
+          {/* Right Side (Image/Chart) */}
+          <div className=" flex-1 flex justify-center  w-full">
+            <div className="rounded-lg overflow-hidden shadow-lg max-w-lg w-full">
+              <Image
+                src="/images/chart1.png"
+                alt="Trading chart platform interface"
+                width={600}
+                height={600}
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
+          {/* Left Side (Text) */}
+          <div className="flex-1 max-w-md ">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Platform</h2>
+            <p className="text-gray-300 mb-6">
+              Access full functionality and a professional trading interface directly from your
+              desktop or mobile device.
+            </p>
 
-          <div className="platforms">
-            <div className="platform-card active">
-              <div className="graph-wrapper">
-                <Link href="/en/Chart" className="block ">
-                  <div className="index-trading-view-chart"></div>
-                </Link>
-              </div>
-            </div>
-            <div className="platform-card">
-              <div className="graph-wrapper">
-                <Link href="/en/Chart">
-                  <Image
-                    src="/images/MobilePlatform.png"
-                    alt="mobile platform  interface"
-                    className=""
-                    width={30}
-                    height={30}
-                  />
-                </Link>
-              </div>
-              <div>
-                "A simple, beginner-friendly interface that makes trading accessible for everyone. "
-              </div>
+            <div className="flex gap-4  items-center justify-center">
+              <button
+                type="button"
+                className="bg-[#f0b90b] hover:bg-[#d79b08] text-black font-semibold px-6 py-2 rounded-md transition-all"
+              >
+                Desktop
+              </button>
+              <button
+                type="button"
+                className="bg-transparent border border-[#f0b90b] text-[#f0b90b] font-semibold px-6 py-2 rounded-md hover:bg-[#f0b90b] hover:text-black transition-all"
+              >
+                Mobile
+              </button>
             </div>
           </div>
         </section>
