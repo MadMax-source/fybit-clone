@@ -5,10 +5,10 @@ import Header from '../shared/header';
 import Footer from '../shared/footer';
 import { ArrowDown, ArrowUp, Star } from 'lucide-react';
 
-const Chart = () => {
+const Chart = ({ session }: { session: any }) => {
   return (
     <div className="text-white bg-[#1a1a1a] min-h-screen">
-      <Header />
+      <Header session={session} />
 
       <main className="bg-[#1a1a1a] mx-auto py-8 grid grid-cols-1 lg:grid-cols-3 gap-6 px-3 lg:px-6">
         {/* Left / Chart Section */}

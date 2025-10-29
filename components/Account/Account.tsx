@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import Footer from '../shared/footer';
 import Header from '../shared/header';
-
-const Account = () => {
+const Account = ({ session }: { session: any }) => {
   return (
     <div>
       <div>
-        <Header />
+        <Header session={session} />
       </div>
       <main className="deposit-container">
         <aside className="sidebar desktop-menu">

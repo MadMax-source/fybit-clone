@@ -3,12 +3,14 @@ import Footer from '../shared/footer';
 import Header from '../shared/header';
 import Link from 'next/link';
 import { ArrowBigLeft, ArrowBigRight, ArrowBigRightDash } from 'lucide-react';
+import { headers } from 'next/headers';
+import { auth } from '../../lib/auth';
 
-const Home = () => {
+const Home = ({ session }: { session: any }) => {
   return (
     <div>
       <div>
-        <Header />
+        <Header session={session} />
       </div>
       <main className="">
         <div className="banner">

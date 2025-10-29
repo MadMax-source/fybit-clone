@@ -4,18 +4,68 @@ import Header from '../shared/header';
 import Footer from '../shared/footer';
 import { Eye, Key, Mail } from 'lucide-react';
 import Link from 'next/link';
+import { FcGoogle } from 'react-icons/fc';
 import { useRouter } from 'next/navigation';
+import { signIn, signInSocial } from '@/lib/actions/auth-actions';
 
-const Login = () => {
+const Login = ({ session }: { session: any }) => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [isSignIn, setIsSignIn] = useState(true);
+
+  const handleSocialAuth = async (provider: 'google') => {
+    setLoading(true);
+    setMessage('');
+
+    try {
+      await signInSocial(provider);
+    } catch (err) {
+      setMessage(
+        `Error authenticating with ${provider}: ${
+          err instanceof Error ? err.message : 'Unknown error'
+        }`,
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      setMessage('⚠️ Please enter both email and password.');
+      return;
+    }
+
+    setLoading(true);
+    setMessage('');
+
+    try {
+      const result = await signIn(email, password);
+      if (result?.user) {
+        setMessage('🎉 Login successful! Redirecting...');
+        setTimeout(() => router.push('/'), 1500);
+      } else {
+        setMessage('❌ Invalid credentials.');
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage('⚠️ Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /*
+
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Simple UI-only flow
     if (email && password) {
       setMessage('🎉 Congratulations! You have logged in.');
       setTimeout(() => {
@@ -26,10 +76,12 @@ const Login = () => {
     }
   };
 
+  */
+
   return (
     <div>
       <div>
-        <Header />
+        <Header session={session} />
       </div>
       <div className="container">
         <form className="login-form" onSubmit={handleLogin}>
@@ -43,6 +95,14 @@ const Login = () => {
                 <span className="text-gray-200">fybit.app</span>
               </Link>
             </div>
+            <button
+              type="button"
+              onClick={() => handleSocialAuth('google')}
+              disabled={loading}
+              className="flex w-full items-center gap-2 border border-gray-300 rounded-md px-4 py-2 hover:bg-gray-100 cursor-pointer"
+            >
+              <FcGoogle size={20} /> Google
+            </button>
 
             <label>Email</label>
             <div className="icon-wrapper">
@@ -92,7 +152,7 @@ const Login = () => {
 
             <input type="hidden" />
             <button className="change-button" type="submit">
-              Log In
+              {loading ? 'Loggin in...' : 'Log In'}
             </button>
 
             {message && <p className="text-center mt-3 font-semibold text-yellow-500">{message}</p>}

@@ -1,11 +1,15 @@
 import ForgotPassword from '@/components/Account/ForgotPassword';
 
-const page = () => {
+import { headers } from 'next/headers';
+import { auth } from '../../../lib/auth';
+
+export default async function page() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
   return (
     <div>
-      <ForgotPassword />
+      <ForgotPassword session={session} />
     </div>
   );
-};
-
-export default page;
+}

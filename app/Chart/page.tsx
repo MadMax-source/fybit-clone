@@ -1,11 +1,15 @@
 import Chart from '@/components/Chart/Chart';
+import { headers } from 'next/headers';
+import { auth } from '../../lib/auth';
 
-const page = () => {
+export default async function page() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
   return (
     <>
-      <Chart />
+      <Chart session={session} />
     </>
   );
-};
-
-export default page;
+}

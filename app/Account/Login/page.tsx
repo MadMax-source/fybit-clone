@@ -1,11 +1,14 @@
 import Login from '@/components/Account/Login';
+import { headers } from 'next/headers';
+import { auth } from '../../../lib/auth';
 
-const page = () => {
+export default async function page() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
   return (
     <div>
-      <Login />
+      <Login session={session} />
     </div>
   );
-};
-
-export default page;
+}

@@ -5,38 +5,56 @@ import Footer from '../shared/footer';
 import { Eye } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { signUp } from '@/lib/actions/auth-actions';
+import { createWallets } from '@/lib/actions/wallet-action';
 
-const Register = () => {
+const Register = ({ session }: { session: any }) => {
   const router = useRouter();
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+    setMessage('');
 
-    // Simple UI-only flow
-    if (fullname && email && password && confirmPassword) {
-      if (password !== confirmPassword) {
-        setMessage('⚠️ Passwords do not match.');
-        return;
-      }
-
-      setMessage('🎉 Congratulations! You have registered successfully.');
-      setTimeout(() => {
-        router.push('/Account/Login');
-      }, 2000);
-    } else {
+    if (!fullname || !email || !password || !confirmPassword) {
       setMessage('⚠️ Please fill all the fields.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setMessage('⚠️ Passwords do not match.');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const result = await signUp(email, password, fullname);
+
+      if (result?.user) {
+        await createWallets(email, fullname);
+        setMessage('🎉 Registration successful! Redirecting to login...');
+        setTimeout(() => {
+          router.push('/Account/Login');
+        }, 2000);
+      } else {
+        setMessage('⚠️ Failed to register. Please try again.');
+      }
+    } catch (error: any) {
+      setMessage(`❌ ${error.message || 'Error creating account.'}`);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
       <div>
-        <Header />
+        <Header session={session} />
       </div>
       <div className="account-details">
         <h2>Sign Up</h2>
@@ -95,8 +113,8 @@ const Register = () => {
           </label>
 
           <input type="hidden" name="timestamp" />
-          <button type="submit" className="change-button">
-            Sign Up
+          <button type="submit" className="change-button" disabled={loading}>
+            {loading ? 'Creating Account...' : 'Sign Up'}
           </button>
 
           {message && <p className="text-center mt-3 font-semibold text-yellow-500">{message}</p>}

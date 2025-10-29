@@ -2,11 +2,10 @@ import React from 'react';
 import Header from '../shared/header';
 import Footer from '../shared/footer';
 import Link from 'next/link';
-
-const Support = () => {
+const Support = ({ session }: { session: any }) => {
   return (
     <div className="min-h-screen bg-[#1a1a1a] text-white flex flex-col">
-      <Header />
+      <Header session={session} />
 
       <main className="flex-1 w-full max-w-7xl mx-auto p-6 flex flex-col lg:flex-row gap-8 pt-22">
         {/* LEFT SECTION - NEW REQUEST */}

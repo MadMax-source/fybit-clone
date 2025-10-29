@@ -1,11 +1,15 @@
 import Faq from '@/components/Faq/Faq';
 
-const page = () => {
+import { headers } from 'next/headers';
+import { auth } from '../../lib/auth';
+
+export default async function page() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
   return (
     <div>
-      <Faq />
+      <Faq session={session} />
     </div>
   );
-};
-
-export default page;
+}

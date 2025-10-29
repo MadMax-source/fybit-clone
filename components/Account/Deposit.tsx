@@ -4,11 +4,11 @@ import Header from '../shared/header';
 import Image from 'next/image';
 import { Copy } from 'lucide-react';
 
-const Deposit = () => {
+const Deposit = ({ session }: { session: any }) => {
   return (
     <div>
       <div>
-        <Header />
+        <Header session={session} />
       </div>
       <div className="deposit-container">
         <aside className="sidebar desktop-menu">

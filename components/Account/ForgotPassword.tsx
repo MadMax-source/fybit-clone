@@ -3,11 +3,11 @@ import Header from '../shared/header';
 import Footer from '../shared/footer';
 import { LetterTextIcon, Mail, MailCheck, MailOpen } from 'lucide-react';
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ session }: { session: any }) => {
   return (
     <div>
       <div>
-        <Header />
+        <Header session={session} />
       </div>
       <div className="containter">
         <div className="reset-password-container">

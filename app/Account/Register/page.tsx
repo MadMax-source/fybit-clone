@@ -1,12 +1,14 @@
 import Register from '@/components/Account/Register';
-import React from 'react';
+import { headers } from 'next/headers';
+import { auth } from '../../../lib/auth';
 
-const page = () => {
+export default async function page() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
   return (
     <div>
-      <Register />
+      <Register session={session} />
     </div>
   );
-};
-
-export default page;
+}
