@@ -2,7 +2,6 @@
 
 import { connectDB } from '../mongodb';
 import { User } from '@/models/User';
-import bcrypt from 'bcryptjs';
 import * as bip39 from 'bip39';
 import * as bitcoin from 'bitcoinjs-lib';
 import { ethers } from 'ethers';

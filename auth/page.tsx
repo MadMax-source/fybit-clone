@@ -1,3 +1,6 @@
+/*
+
+
 import { auth } from '../lib/auth';
 import AuthClientPage from './auth-client';
 import { headers } from 'next/headers';
@@ -14,12 +17,12 @@ export default async function AuthPage() {
 
   return <AuthClientPage />;
 }
-
-/*
-import AuthClientPage from "./auth-client";
-
-export default async function AuthPage() {
-  return <AuthClientPage />;
-}
-
 */
+
+import React from 'react';
+
+const page = () => {
+  return <div>page</div>;
+};
+
+export default page;

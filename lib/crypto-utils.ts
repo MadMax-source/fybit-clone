@@ -9,10 +9,6 @@ if (ENC_KEY.length !== 32) {
   throw new Error('ENCRYPTION_KEY must be 32 bytes (base64).');
 }
 
-/**
- * Encrypt a UTF-8 string and return a compact JSON string containing:
- * { iv: base64, tag: base64, data: base64 }
- */
 export function encryptText(plain: string): string {
   const iv = crypto.randomBytes(12); // 96-bit recommended for GCM
   const cipher = crypto.createCipheriv('aes-256-gcm', ENC_KEY, iv);
@@ -27,9 +23,6 @@ export function encryptText(plain: string): string {
   return JSON.stringify(payload);
 }
 
-/**
- * Decrypt the JSON produced by encryptText
- */
 export function decryptText(payloadJson: string): string {
   const payload = JSON.parse(payloadJson);
   const iv = Buffer.from(payload.iv, 'base64');

@@ -1,3 +1,13 @@
+import React from 'react';
+
+const Client = () => {
+  return <div>auth-client</div>;
+};
+
+export default Client;
+
+/*
+
 'use client';
 
 import { useState } from 'react';
@@ -19,7 +29,6 @@ export default function AuthClientPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Get callback URL from search params (set by middleware)
 
   const handleSocialAuth = async (provider: 'google' | 'github') => {
     setIsLoading(true);
@@ -77,7 +86,6 @@ export default function AuthClientPage() {
             </p>
           </div>
 
-          {/* Error Display */}
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
               <div className="flex">
@@ -97,7 +105,6 @@ export default function AuthClientPage() {
             </div>
           )}
 
-          {/* Social Authentication */}
           <div className="space-y-3">
             <button
               onClick={() => handleSocialAuth('google')}
@@ -152,7 +159,6 @@ export default function AuthClientPage() {
             </div>
           </div>
 
-          {/* Email/Password Form */}
           <form onSubmit={handleEmailAuth} className="space-y-4">
             {!isSignIn && (
               <div>
@@ -244,7 +250,6 @@ export default function AuthClientPage() {
             </button>
           </form>
 
-          {/* Toggle between Sign In and Sign Up */}
           <div className="text-center">
             <button
               type="button"
@@ -263,3 +268,5 @@ export default function AuthClientPage() {
     </div>
   );
 }
+
+*/
