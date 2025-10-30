@@ -1,66 +1,71 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import Footer from '../shared/footer';
 import Header from '../shared/header';
+
 const Account = ({ session }: { session: any }) => {
+  const [fullName, setFullName] = useState('');
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Just a frontend-only flow: simulate a success message
+    setSuccessMessage('✅ Info changed successfully.');
+    // Clear inputs after a short delay
+    setTimeout(() => {
+      setFullName('');
+      setOldPassword('');
+      setNewPassword('');
+      setSuccessMessage('');
+    }, 3000);
+  };
+
   return (
     <div>
-      <div>
-        <Header session={session} />
-      </div>
-      <main className="deposit-container">
-        <aside className="sidebar desktop-menu">
-          <h3 className="text-xl font-semibold">Available Balance</h3>
+      <Header session={session} />
+
+      <main className="deposit-container flex flex-col md:flex-row">
+        {/* Sidebar */}
+        <aside className="sidebar w-full md:w-1/4 p-6 border-r border-gray-700">
+          <h3 className="text-xl font-semibold mb-3">Available Balance</h3>
           <p>BTC: 0</p>
           <p>ETH: 0</p>
           <p>USDT: 0</p>
-          <nav>
-            <div className="border border-gray-500 my-4" />
-            <h3 className="text-xl font-semibold">Account & Preferences</h3>
-            <ul>
-              <li>
-                <Link href="/Acccount">
-                  <span className="text-gray-200 font-normal">Account</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/Acccount/Preferences">
-                  <span className="text-gray-200 font-normal">Preferences</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/Acccount/Google2Fa">
-                  <span className="text-gray-200 font-normal">Account Security</span>
-                </Link>
-              </li>
-            </ul>
-          </nav>
+
+          <div className="border border-gray-500 my-4" />
+          <h3 className="text-xl font-semibold mb-2">Account & Preferences</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/Account">
+                <span className="text-gray-200 font-normal hover:text-yellow-500">Account</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/Account/Preferences">
+                <span className="text-gray-200 font-normal hover:text-yellow-500">Preferences</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/Account/Google2Fa">
+                <span className="text-gray-200 font-normal hover:text-yellow-500">
+                  Account Security
+                </span>
+              </Link>
+            </li>
+          </ul>
         </aside>
-        <aside className="faq-menu mobile-menu">
-          <nav>
-            <div className="border border-gray-500 my-4" />
-            <h3 className="text-xl font-semibold">Account & Preferences</h3>
-            <ul>
-              <li>
-                <Link href="/Acccount">
-                  <span className="text-gray-200 font-normal">Account</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/Acccount/Preferences">
-                  <span className="text-gray-200 font-normal">Preferences</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/Acccount/Google2Fa">
-                  <span className="text-gray-200 font-normal">Account Security</span>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </aside>
-        <div className=" faq-content">
-          <form className="max-w-md mx-auto  p-8 rounded-2xl  text-white">
-            <h2 className="text-2xl font-semibold mb-6 text-white">Change Account Details</h2>
+
+        {/* Main content */}
+        <div className="faq-content flex-1 px-6 py-10 text-white">
+          <form
+            onSubmit={handleSubmit}
+            className="max-w-md mx-auto bg-[#1c1c1c] p-8 rounded-2xl border border-gray-700 shadow-lg"
+          >
+            <h2 className="text-2xl font-semibold mb-6 text-yellow-500">Change Account Details</h2>
 
             <div className="mb-4">
               <label htmlFor="fullname" className="block text-sm font-medium mb-2 text-gray-300">
@@ -70,7 +75,10 @@ const Account = ({ session }: { session: any }) => {
                 id="fullname"
                 type="text"
                 name="fullname"
-                className="w-full  border  border-gray-500 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="Enter your full name"
+                className="w-full bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
             </div>
 
@@ -81,9 +89,9 @@ const Account = ({ session }: { session: any }) => {
               <input
                 id="email"
                 type="email"
-                className="w-full  border border-gray-500 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                value={session?.user?.email || 'user@example.com'}
                 disabled
-                placeholder="ikram22@gmail.com"
+                className="w-full bg-gray-800 text-gray-400 border border-gray-600 rounded-lg px-4 py-2 text-sm"
               />
             </div>
 
@@ -94,9 +102,10 @@ const Account = ({ session }: { session: any }) => {
               <input
                 id="oldpassword"
                 type="password"
-                name="oldpassword"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
                 placeholder="Enter old password"
-                className="w-full  border border-gray-500 rounded-lg px-4 py-2 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="w-full bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
             </div>
 
@@ -107,31 +116,34 @@ const Account = ({ session }: { session: any }) => {
               <input
                 id="newpassword"
                 type="password"
-                name="newpassword"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="Enter new password"
-                className="w-full  border border-gray-500 rounded-lg px-4 py-2 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="w-full bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-yellow-500 hover:bg-yellow-600 text-white  rounded-lg py-2 transition"
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-lg py-2 transition"
             >
               Change
             </button>
 
+            {successMessage && (
+              <p className="text-green-400 text-sm text-center mt-4">{successMessage}</p>
+            )}
+
             <p className="text-gray-400 text-xs mt-6 leading-relaxed">
               You cannot change the email address because it is the login name of your account.
               <br />
-              If you want to change the email address, you must register a new account with a new
-              email address.
+              To use a new email, please register a new account.
             </p>
           </form>
         </div>
       </main>
-      <div>
-        <Footer />
-      </div>
+
+      <Footer />
     </div>
   );
 };
