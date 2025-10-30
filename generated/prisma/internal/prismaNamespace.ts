@@ -25,6 +25,11 @@ export type DMMF = typeof runtime.DMMF
 export type PrismaPromise<T> = runtime.Types.Public.PrismaPromise<T>
 
 /**
+ * Validator
+ */
+export const validator = runtime.Public.validator
+
+/**
  * Prisma Errors
  */
 
@@ -87,19 +92,18 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 6.18.0
- * Query Engine version: 34b5a692b7bd79939a9a2c3ef97d816e749cda2f
+ * Prisma Client JS version: 6.15.0
+ * Query Engine version: 85179d7826409ee107a6ba334b5e305ae3fba9fb
  */
 export const prismaVersion: PrismaVersion = {
-  client: "6.18.0",
-  engine: "34b5a692b7bd79939a9a2c3ef97d816e749cda2f"
+  client: "6.15.0",
+  engine: "85179d7826409ee107a6ba334b5e305ae3fba9fb"
 }
 
 /**
  * Utility Types
  */
 
-export type Bytes = runtime.Bytes
 export type JsonObject = runtime.JsonObject
 export type JsonArray = runtime.JsonArray
 export type JsonValue = runtime.JsonValue
@@ -107,31 +111,32 @@ export type InputJsonObject = runtime.InputJsonObject
 export type InputJsonArray = runtime.InputJsonArray
 export type InputJsonValue = runtime.InputJsonValue
 
-
 export const NullTypes = {
   DbNull: runtime.objectEnumValues.classes.DbNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.DbNull),
   JsonNull: runtime.objectEnumValues.classes.JsonNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.JsonNull),
   AnyNull: runtime.objectEnumValues.classes.AnyNull as (new (secret: never) => typeof runtime.objectEnumValues.instances.AnyNull),
 }
+
 /**
  * Helper for filtering JSON entries that have `null` on the database (empty on the db)
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
 export const DbNull = runtime.objectEnumValues.instances.DbNull
+
 /**
  * Helper for filtering JSON entries that have JSON `null` values (not empty on the db)
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
 export const JsonNull = runtime.objectEnumValues.instances.JsonNull
+
 /**
  * Helper for filtering JSON entries that are `Prisma.DbNull` or `Prisma.JsonNull`
  *
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
 export const AnyNull = runtime.objectEnumValues.instances.AnyNull
-
 
 type SelectAndInclude = {
   select: any
@@ -949,10 +954,6 @@ export interface PrismaClientOptions {
     timeout?: number
     isolationLevel?: TransactionIsolationLevel
   }
-  /**
-   * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
-   */
-  adapter?: runtime.SqlDriverAdapterFactory | null
   /**
    * Global configuration for omitting model fields by default.
    * 

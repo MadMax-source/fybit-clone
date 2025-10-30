@@ -44,13 +44,13 @@ const config: runtime.GetPrismaClientConfig = {
     "isCustomOutput": true
   },
   "relativePath": "../../prisma",
-  "clientVersion": "6.18.0",
-  "engineVersion": "34b5a692b7bd79939a9a2c3ef97d816e749cda2f",
+  "clientVersion": "6.15.0",
+  "engineVersion": "85179d7826409ee107a6ba334b5e305ae3fba9fb",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
